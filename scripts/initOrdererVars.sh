@@ -25,7 +25,6 @@ function initOrdererVars {
    export ORDERER_GENERAL_GENESISFILE=$GENESIS_BLOCK_FILE
    export ORDERER_GENERAL_LOCALMSPID=$ORG_MSP_ID
    export ORDERER_GENERAL_LOCALMSPDIR=$MYHOME/msp
-   echo l
    # enabled TLS
    export ORDERER_GENERAL_TLS_ENABLED=true
    TLSDIR=$MYHOME/tls
@@ -33,6 +32,5 @@ function initOrdererVars {
    export ORDERER_GENERAL_TLS_CERTIFICATE=$TLSDIR/server.crt
    export ORDERER_GENERAL_TLS_ROOTCAS=[$CA_CHAINFILE]
 }
-
 
 initOrdererVars $1 $2

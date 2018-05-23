@@ -1,0 +1,10 @@
+[33m2018-05-23 23:18:43.824 UTC [msp] getPemMaterialFromDir -> WARN 001[0m Failed reading file /etc/hyperledger/fabric/orgs/org0/user/msp/intermediatecerts/rca-org0-7054.pem: no pem content for file /etc/hyperledger/fabric/orgs/org0/user/msp/intermediatecerts/rca-org0-7054.pem
+[36m2018-05-23 23:18:43.848 UTC [msp] GetLocalMSP -> DEBU 002[0m Returning existing local MSP
+[36m2018-05-23 23:18:43.848 UTC [msp] GetDefaultSigningIdentity -> DEBU 003[0m Obtaining default signing identity
+2018-05-23 23:18:43.848 UTC [chaincodeCmd] checkChaincodeCmdParams -> INFO 004[0m Using default escc
+2018-05-23 23:18:43.848 UTC [chaincodeCmd] checkChaincodeCmdParams -> INFO 005[0m Using default vscc
+[36m2018-05-23 23:18:43.848 UTC [chaincodeCmd] getChaincodeSpec -> DEBU 006[0m java chaincode disabled
+[36m2018-05-23 23:18:43.849 UTC [msp/identity] Sign -> DEBU 007[0m Sign: plaintext: 0AF2080A6708031A0C08D3ED97D80510...6D7963631A0A0A0571756572790A0161 
+[36m2018-05-23 23:18:43.849 UTC [msp/identity] Sign -> DEBU 008[0m Sign: digest: BFCD9D09E28B26BDBF77D61A5F882F4FE4FA40068F674A0EC331047D9FDCC534 
+Query Result: 70
+2018-05-23 23:19:07.908 UTC [main] main -> INFO 009[0m Exiting.....
