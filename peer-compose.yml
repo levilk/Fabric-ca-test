@@ -1,0 +1,47 @@
+version: '2'
+
+networks:
+  fabric-ca:
+
+services:
+
+ peer3-org0:
+    container_name: peer3-org0
+    image: hyperledger/fabric-ca-peer:x86_64-1.1.0
+    environment:
+      - FABRIC_CA_CLIENT_HOME=/opt/gopath/src/github.com/hyperledger/fabric/peer
+      - FABRIC_CA_CLIENT_TLS_CERTFILES=/data/org0-ca-cert.pem
+      - ENROLLMENT_URL=https://peer3-org0:peer3-org0pw@rca-org0:7054
+      - PEER_NAME=peer3-org0
+      - PEER_HOME=/opt/gopath/src/github.com/hyperledger/fabric/peer
+      - PEER_HOST=peer3-org0
+      - PEER_NAME_PASS=peer3-org0:peer3-org0pw
+      - CORE_PEER_ID=peer3-org0
+      - CORE_PEER_ADDRESS=peer3-org0:7051
+      - CORE_PEER_LOCALMSPID=org0MSP
+      - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/msp
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=net_fabric-ca
+      - CORE_LOGGING_LEVEL=DEBUG
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_TLS_CERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/data/org0-ca-cert.pem
+      - CORE_PEER_TLS_CLIENTAUTHREQUIRED=true
+      - CORE_PEER_TLS_CLIENTROOTCAS_FILES=/data/org0-ca-cert.pem
+      - CORE_PEER_TLS_CLIENTCERT_FILE=/data/tls/peer3-org0-client.crt
+      - CORE_PEER_TLS_CLIENTKEY_FILE=/data/tls/peer3-org0-client.key
+      - CORE_PEER_GOSSIP_USELEADERELECTION=true
+      - CORE_PEER_GOSSIP_ORGLEADER=false
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer3-org0:7051
+      - CORE_PEER_GOSSIP_SKIPHANDSHAKE=true
+      - ORG=org0
+      - ORG_ADMIN_CERT=/data/orgs/org0/msp/admincerts/cert.pem
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+    command: /bin/bash -c '/scripts/addPeer.sh 2>&1 | tee /data/logs/peer3-org0.log'
+    volumes:
+      - ./scripts:/scripts
+      - ./data:/data
+      - /var/run:/host/var/run
+    networks:
+      - fabric-ca
