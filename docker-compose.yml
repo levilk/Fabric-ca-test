@@ -65,7 +65,6 @@ services:
     volumes:
       - ./scripts:/scripts
       - ./data:/data
-      -  /etc/hyperledger/fabric
     networks:
       - fabric-ca
     depends_on:
@@ -111,7 +110,6 @@ services:
       - ./scripts:/scripts
       - ./data:/data
       -  /var/run:/host/var/run
-      -  /etc/hyperledger/fabric
     networks:
       - fabric-ca
     depends_on:
